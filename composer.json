@@ -1,0 +1,23 @@
+{
+    "name": "2amigos/yii2-table-export-widget",
+    "description": "Table Export Widget for Yii2.",
+    "keywords": ["yii", "extension", "export", "widget"],
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Antonio Ramirez",
+            "email": "ramirez.cobos@gmail.com",
+            "homepage": "http://2amigos.us"
+        }
+    ],
+    "require" : {
+        "yiisoft/yii2": "*",
+        "2amigos/yii2-dosamigos-asset-bundle": "0.1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "dosamigos\\tableexport\\": ""
+        }
+    }
+}
