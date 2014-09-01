@@ -19,7 +19,7 @@ use yii\web\AssetBundle;
  */
 class ButtonTableExportAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/yii2-table-export-widget/assets';
+    public $sourcePath = '@vendor/2amigos/yii2-table-export-widget/assets';
 
     public $js = [
         'js/dosamigos-table-export.js',
