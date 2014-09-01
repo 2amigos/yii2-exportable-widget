@@ -93,6 +93,29 @@ use dosamigos\tableexport\ButtonTableExport;
 
 ```
 
+Using it manually
+
+```php
+<?php
+// On your view
+use dosamigos\tableexport\ButtonTableExportAsset;
+
+ButtonTableExportAsset::register($this);
+?>
+
+<a id="linkId" >Export Table as Xml</a>
+
+```
+
+```javascript
+// On your javascript file
+$('#linkId').tableExport({
+    type: "xml",
+    useDataUri: true
+});
+
+```
+
 > [![2amigOS!](http://www.gravatar.com/avatar/55363394d72945ff7ed312556ec041e0.png)](http://www.2amigos.us)  
 <i>Web development has never been so fun!</i>  
 [www.2amigos.us](http://www.2amigos.us)
