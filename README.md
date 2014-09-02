@@ -1,7 +1,7 @@
 Table Export Widget for Yii2
 ============================  
 
-[![Latest Stable Version](https://poser.pugx.org/2amigos/yii2-table-export-widget/v/stable.svg)](https://packagist.org/packages/2amigos/yii2-table-export-widget) [![Total Downloads](https://poser.pugx.org/2amigos/yii2-table-export-widget/downloads.svg)](https://packagist.org/packages/2amigos/yii2-editable-widget) [![Latest Unstable Version](https://poser.pugx.org/2amigos/yii2-table-export-widget/v/unstable.svg)](https://packagist.org/packages/2amigos/yii2-table-export-widget) [![License](https://poser.pugx.org/2amigos/yii2-table-export-widget/license.svg)](https://packagist.org/packages/2amigos/yii2-table-export-widget)
+[![Latest Stable Version](https://poser.pugx.org/2amigos/yii2-table-export-widget/v/stable.svg)](https://packagist.org/packages/2amigos/yii2-table-export-widget) [![Total Downloads](https://poser.pugx.org/2amigos/yii2-table-export-widget/downloads.svg)](https://packagist.org/packages/2amigos/yii2-table-export-widget) [![Latest Unstable Version](https://poser.pugx.org/2amigos/yii2-table-export-widget/v/unstable.svg)](https://packagist.org/packages/2amigos/yii2-table-export-widget) [![License](https://poser.pugx.org/2amigos/yii2-table-export-widget/license.svg)](https://packagist.org/packages/2amigos/yii2-table-export-widget)
 
 ButtonTableExport widget is a wrapper for the [2amigOS!](http://2amigos.us) TableExport jQuery plugin. It provides a
 number of options to export an HTML table in different formats.
