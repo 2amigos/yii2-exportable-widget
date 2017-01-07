@@ -301,7 +301,12 @@
 										$cols = $row.find('td,th');
 								return $cols.map(function (j, col) {
 										var $col = $(col),
-												text = $col.text();
+												text = $col
+													.clone()    //clone the element
+													.children() //select all the children
+													.remove()   //remove all the children
+													.end()  //again go back to selected element
+													.text();
 										return text.replace('"', '""');
 								}).get().join(tmpColDelim);
 						}).get().join(tmpRowDelim)
