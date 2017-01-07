@@ -255,6 +255,9 @@
 		 */
 		function TableExport(element, options) {
 				this.options = $.extend({}, defaults, options);
+				if( typeof this.options.table !== "undefined" && this.options.table){
+					this.options.table = this.options.table instanceof jQuery? this.options.table: $(this.options.table);
+				}
 				this.$table = clean.call(this);
 				this.element = element;
 				this.$element = $(element);
