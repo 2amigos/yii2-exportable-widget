@@ -118,9 +118,14 @@ $('#linkId').tableExport({
 });
 
 ```
-Atantion!!! useDataUri this option doesn`t workon in Chrome
+Atantion!!! useDataUri this option doesn't workon in Chrome
 
-or
+or add in View
+
+```php
+use dosamigos\tableexport\ButtonTableExportAsset;
+ButtonTableExportAsset::register($this);
+```
 
 ```php
 		<?php
