@@ -81,7 +81,7 @@ public function actions()
 // On your view
 use dosamigos\gridexport\ExportGridButton;
 
-<?= ExportGridButton::widget(
+echo ExportGridButton::widget(
     [
         'label' => 'Export Table',
         'selector' => '#tableId', // any jQuery selector
@@ -91,7 +91,7 @@ use dosamigos\gridexport\ExportGridButton;
             'url' => \yii\helpers\Url::to('controller/download')
         ]
     ]
-);?>
+);
 
 ```
 
@@ -100,9 +100,9 @@ Using it manually
 ```php
 <?php
 // On your view
-use dosamigos\gridexport\ButtonTableExportAsset;
+use dosamigos\gridexport\bundles\ExportGridAsset;
 
-ButtonTableExportAsset::register($this);
+ExportGridAsset::register($this);
 ?>
 
 <a id="linkId" >Export Table as Xml</a>
@@ -129,19 +129,19 @@ ButtonTableExportAsset::register($this);
 
 ```php
 <?php
-    $this->registerJs('
-        $(\'#linkId\').gridExport({
-                type: "csv",
-                filename: "export",
-                table: "#tableId",
-                useDataUri: false,
-                showHeader: false,
-                url: "'.\yii\helpers\Url::to('download').'"
-        });
-    ');
+$this->registerJs('
+    $(\'#linkId\').gridExport({
+        type: "csv",
+        filename: "export",
+        table: "#tableId",
+        useDataUri: false,
+        showHeader: false,
+        url: "'.\yii\helpers\Url::to('download').'"
+    });
+');
 ?>
 ```
 
 > [![2amigOS!](http://www.gravatar.com/avatar/55363394d72945ff7ed312556ec041e0.png)](http://www.2amigos.us)  
-<i>Web development has never been so fun!</i>  
-[www.2amigos.us](http://www.2amigos.us)
+> <i>Custom Software | Web & Mobile Software Development</i>  
+> [www.2amigos.us](http://www.2amigos.us)
