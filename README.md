@@ -113,9 +113,33 @@ ButtonTableExportAsset::register($this);
 // On your javascript file
 $('#linkId').tableExport({
     type: "xml",
+    table: "#tableId",
     useDataUri: true
 });
 
+```
+Atantion!!! useDataUri this option doesn't workon in Chrome
+
+or add in View
+
+```php
+use dosamigos\tableexport\ButtonTableExportAsset;
+ButtonTableExportAsset::register($this);
+```
+
+```php
+		<?php
+			$this->registerJs('
+				$(\'#linkId\').tableExport({
+						type: "csv",
+						filename: "export",
+						table: "#tableId",
+						useDataUri: false,
+						showHeader: false,
+						url: "'.\yii\helpers\Url::to('download').'"
+				});
+			');
+		?>
 ```
 
 > [![2amigOS!](http://www.gravatar.com/avatar/55363394d72945ff7ed312556ec041e0.png)](http://www.2amigos.us)  

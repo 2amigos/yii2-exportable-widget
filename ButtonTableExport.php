@@ -40,85 +40,86 @@ use yii\web\JsExpression;
  */
 class ButtonTableExport extends ButtonDropdown
 {
-    /**
-     * @var string the table id or CSS selector
-     */
-    public $selector;
-    /**
-     * @var string the button label
-     */
-    public $label = 'Export';
-    /**
-     * @var array the options for the underlying TableExport JS plugin.
-     * Please refer to the plugin file code for its options. These options are configured globally for all types of
-     * export.
-     */
-    public $exportClientOptions = [];
-    /**
-     * @var array the export types available. You can modify the list to display only certain types. For example,
-     *
-     * ```
-     * 'types' => [ 'xml' ]
-     * ```
-     *
-     * Will display only XML as the unique type of exportation. Defaults to all possible options available.
-     */
-    public $types = [
-        'xml',
-        'csv',
-        'pdf',
-        'json',
-        'html'
-    ];
+		/**
+		 * @var string the table id or CSS selector
+		 */
+		public $selector;
+		/**
+		 * @var string the button label
+		 */
+		public $label = 'Export';
+		/**
+		 * @var array the options for the underlying TableExport JS plugin.
+		 * Please refer to the plugin file code for its options. These options are configured globally for all types of
+		 * export.
+		 */
+		public $exportClientOptions = [];
+		/**
+		 * @var array the export types available. You can modify the list to display only certain types. For example,
+		 *
+		 * ```
+		 * 'types' => [ 'xml' ]
+		 * ```
+		 *
+		 * Will display only XML as the unique type of exportation. Defaults to all possible options available.
+		 */
+		public $types = [
+				'xml',
+				'csv',
+				'pdf',
+				'json',
+				'html'
+		];
 
-    public function init()
-    {
-        parent::init();
-        if ($this->selector === null) {
-            throw new InvalidConfigException('"selector" cannot be empty');
-        }
-        $this->encodeLabel = false;
-        $this->exportClientOptions['table'] = new JsExpression("{$this->options['id']}tableExport");
-        $this->initDropdownItems();
+		public function init()
+		{
+				parent::init();
+				if ($this->selector === null) {
+						throw new InvalidConfigException('"selector" cannot be empty');
+				}
+				$this->encodeLabel = false;
+				$this->exportClientOptions['table'] = new JsExpression("{$this->options['id']}tableExport");
+				$this->initDropdownItems();
 
-    }
+		}
 
-    public function run()
-    {
-        parent::run();
-        $this->registerTableExportPlugin();
-    }
+		public function run()
+		{
+				$this->registerTableExportPlugin();
+				return parent::run();
+		}
 
-    public function initDropdownItems()
-    {
-        $id = $this->options['id'];
-        foreach ($this->types as $type) {
-            $this->dropdown['items'][] = [
-                'label' => Html::tag('span', '', ['class' => "icon-{$type}-file"]) . " {$type}",
-                'linkOptions' => [
-                    'id' => $id . $type . 'tableExport',
-                    'data-type' => $type
-                ]
-            ];
-        }
-        $this->dropdown['encodeLabels'] = false;
-    }
+		public function initDropdownItems()
+		{
+				$id = $this->options['id'];
+				foreach ($this->types as $type) {
+						$this->dropdown['items'][] = [
+								'label' => Html::tag('span', '', ['class' => "icon-{$type}-file"]) . " {$type}",
+								'url' => '#',
+								'linkOptions' => [
+										'id' => $id . $type . 'tableExport',
+										'data-type' => $type,
+								]
+						];
+				}
+				$this->dropdown['encodeLabels'] = false;
+		}
 
-    protected function registerTableExportPlugin()
-    {
-        $js = [];
-        $id = $this->options['id'];
-        $view = $this->getView();
+		protected function registerTableExportPlugin()
+		{
+				$js = [];
+				$id = $this->options['id'];
+				$view = $this->getView();
 
-        ButtonTableExportAsset::register($view);
+				ButtonTableExportAsset::register($view);
 
-        $options = Json::encode($this->exportClientOptions);
+				$options = Json::encode($this->exportClientOptions);
 
-        $js[] = "var {$id}tableExport=jQuery('{$this->selector}');";
-        foreach ($this->types as $type) {
-            $el = $id . $type . 'tableExport';
-            $js[] = "jQuery('#$el').tableExport($options);";
-        }
-        $view->registerJs(implode("\n", $js));
-    }
+				$js[] = "var {$id}tableExport=jQuery('{$this->selector}');";
+				foreach ($this->types as $type) {
+						$el = $id . $type . 'tableExport';
+						$js[] = "jQuery('#$el').tableExport($options);";
+				}
+				$view->registerJs(implode("\n", $js));
+		}
 }
