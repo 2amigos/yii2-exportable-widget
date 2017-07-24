@@ -1,7 +1,7 @@
 Export Grid Widget for Yii2
 ===========================
 
-[![Latest Stable Version](https://poser.pugx.org/2amigos//yii2-export-grid-button-widget/v/stable.svg)](https://packagist.org/packages/2amigos/yii2-export-grid-button-widget) [![Total Downloads](https://poser.pugx.org/2amigos/yii2-export-grid-button-widget/downloads.svg)](https://packagist.org/packages/2amigos/yii2-export-grid-button-widget) [![Latest Unstable Version](https://poser.pugx.org/2amigos/yii2-export-grid-button-widget/v/unstable.svg)](https://packagist.org/packages/2amigos/yii2-export-grid-button-widget) [![License](https://poser.pugx.org/2amigos/yii2-export-grid-button-widget/license.svg)](https://packagist.org/packages/2amigos/yii2-export-grid-button-widget)
+[![Latest Stable Version](https://poser.pugx.org/2amigos/yii2-export-grid-button-widget/v/stable.svg)](https://packagist.org/packages/2amigos/yii2-export-grid-button-widget) [![Total Downloads](https://poser.pugx.org/2amigos/yii2-export-grid-button-widget/downloads.svg)](https://packagist.org/packages/2amigos/yii2-export-grid-button-widget) [![Latest Unstable Version](https://poser.pugx.org/2amigos/yii2-export-grid-button-widget/v/unstable.svg)](https://packagist.org/packages/2amigos/yii2-export-grid-button-widget) [![License](https://poser.pugx.org/2amigos/yii2-export-grid-button-widget/license.svg)](https://packagist.org/packages/2amigos/yii2-export-grid-button-widget)
 
 ExportGridButton widget is a wrapper for the [2amigOS!](http://2amigos.us) GridExport jQuery plugin. It provides a
 number of options to export an HTML table in different formats.
