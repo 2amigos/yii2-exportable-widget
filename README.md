@@ -62,7 +62,7 @@ Using `ExportGridAction` - the most reliable option:
 
 ```php
 // On your controller
-use dosamigos\gridexport\ExportGridButton;
+use dosamigos\gridexport\actions\ExportGridAction;
 
 // ...
 public function actions()
