@@ -1,23 +1,54 @@
 {
-    "name": "2amigos/yii2-table-export-widget",
-    "description": "Table Export Widget for Yii2.",
+    "name": "2amigos/yii2-export-grid-button-widget",
+    "description": "Export Grid Widget for Yii2.",
     "keywords": ["yii", "extension", "export", "widget"],
     "type": "yii2-extension",
     "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Antonio Ramirez",
-            "email": "ramirez.cobos@gmail.com",
+            "email": "hola@2amigos.us",
             "homepage": "http://2amigos.us"
         }
     ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require" : {
-        "yiisoft/yii2": "*",
-        "2amigos/yii2-dosamigos-asset-bundle": "0.1.*"
+        "yiisoft/yii2": "~2.0.5",
+        "2amigos/yii2-dosamigos-asset-bundle": "0.1.*",
+        "bower-asset/jspdf": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0",
+        "friendsofphp/php-cs-fixer": "^2.0",
+        "squizlabs/php_codesniffer": "*",
+        "phpmd/phpmd": "@stable",
+        "2amigos/yii2-editable-widget": "~1.0"
     },
     "autoload": {
         "psr-4": {
-            "dosamigos\\tableexport\\": ""
+            "dosamigos\\gridexport\\": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "config": {
+        "preferred-install": {
+            "*": "auto"
+        },
+        "fxp-asset": {
+            "installer-paths": {
+                "npm-asset-library": "vendor/npm",
+                "bower-asset-library": "vendor/bower"
+            },
+            "vcs-driver-options": {
+                "github-no-api": true
+            },
+            "git-skip-update": "2 days",
+            "pattern-skip-version": "(-build|-patch)"
         }
     }
 }

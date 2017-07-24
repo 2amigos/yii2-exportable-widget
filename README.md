@@ -1,9 +1,9 @@
-Table Export Widget for Yii2
-============================  
+Export Grid Widget for Yii2
+===========================
 
-[![Latest Stable Version](https://poser.pugx.org/2amigos/yii2-table-export-widget/v/stable.svg)](https://packagist.org/packages/2amigos/yii2-table-export-widget) [![Total Downloads](https://poser.pugx.org/2amigos/yii2-table-export-widget/downloads.svg)](https://packagist.org/packages/2amigos/yii2-table-export-widget) [![Latest Unstable Version](https://poser.pugx.org/2amigos/yii2-table-export-widget/v/unstable.svg)](https://packagist.org/packages/2amigos/yii2-table-export-widget) [![License](https://poser.pugx.org/2amigos/yii2-table-export-widget/license.svg)](https://packagist.org/packages/2amigos/yii2-table-export-widget)
+[![Latest Stable Version](https://poser.pugx.org/2amigos//yii2-export-grid-button-widget/v/stable.svg)](https://packagist.org/packages/2amigos/yii2-export-grid-button-widget) [![Total Downloads](https://poser.pugx.org/2amigos/yii2-export-grid-button-widget/downloads.svg)](https://packagist.org/packages/2amigos/yii2-export-grid-button-widget) [![Latest Unstable Version](https://poser.pugx.org/2amigos/yii2-export-grid-button-widget/v/unstable.svg)](https://packagist.org/packages/2amigos/yii2-export-grid-button-widget) [![License](https://poser.pugx.org/2amigos/yii2-export-grid-button-widget/license.svg)](https://packagist.org/packages/2amigos/yii2-export-grid-button-widget)
 
-ButtonTableExport widget is a wrapper for the [2amigOS!](http://2amigos.us) TableExport jQuery plugin. It provides a
+ExportGridButton widget is a wrapper for the [2amigOS!](http://2amigos.us) GridExport jQuery plugin. It provides a
 number of options to export an HTML table in different formats.
 
 The current supported formats are:
@@ -26,12 +26,12 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require "2amigos/yii2-table-export-widget" "*"
+php composer.phar require "2amigos/yii2-export-grid-button-widget" "*"
 ```
 or add
 
 ```json
-"2amigos/yii2-table-export-widget" : "*"
+"2amigos/yii2-export-grid-button-widget" : "*"
 ```
 
 to the require section of your application's `composer.json` file.
@@ -43,9 +43,9 @@ Using `data-uri` method. Please, check [http://caniuse.com/#feat=datauri](http:/
 about browser support for this method.
 
 ```php
-use dosamigos\tableexport\ButtonTableExport;
+use dosamigos\gridexport\ExportGridButton;
 
-echo ButtonTableExport::widget([
+echo ExportGridButton::widget([
      [
         'label' => 'Export Table Grid',
         'selector' => '#my-grid-id > table',
@@ -58,11 +58,11 @@ echo ButtonTableExport::widget([
 ]);
 ```
 
-Using `TableExportAction` - the most reliable option:
+Using `ExportGridAction` - the most reliable option:
 
 ```php
 // On your controller
-use dosamigos\tableexport\ButtonTableExport;
+use dosamigos\gridexport\ExportGridButton;
 
 // ...
 public function actions()
@@ -70,7 +70,7 @@ public function actions()
     return [
         // ...
         'download' => [
-            'class' => TableExportAction::className()
+            'class' => ExportGridAction::className()
         ]
         // ...
     ];
@@ -79,9 +79,9 @@ public function actions()
 // ...
 
 // On your view
-use dosamigos\tableexport\ButtonTableExport;
+use dosamigos\gridexport\ExportGridButton;
 
-<?= ButtonTableExport::widget(
+<?= ExportGridButton::widget(
     [
         'label' => 'Export Table',
         'selector' => '#tableId', // any jQuery selector
@@ -100,7 +100,7 @@ Using it manually
 ```php
 <?php
 // On your view
-use dosamigos\tableexport\ButtonTableExportAsset;
+use dosamigos\gridexport\ButtonTableExportAsset;
 
 ButtonTableExportAsset::register($this);
 ?>
@@ -111,7 +111,7 @@ ButtonTableExportAsset::register($this);
 
 ```javascript
 // On your javascript file
-$('#linkId').tableExport({
+$('#linkId').gridExport({
     type: "xml",
     table: "#tableId",
     useDataUri: true
@@ -123,23 +123,23 @@ Atantion!!! useDataUri this option doesn't workon in Chrome
 or add in View
 
 ```php
-use dosamigos\tableexport\ButtonTableExportAsset;
+use dosamigos\gridexport\ButtonTableExportAsset;
 ButtonTableExportAsset::register($this);
 ```
 
 ```php
-		<?php
-			$this->registerJs('
-				$(\'#linkId\').tableExport({
-						type: "csv",
-						filename: "export",
-						table: "#tableId",
-						useDataUri: false,
-						showHeader: false,
-						url: "'.\yii\helpers\Url::to('download').'"
-				});
-			');
-		?>
+<?php
+    $this->registerJs('
+        $(\'#linkId\').gridExport({
+                type: "csv",
+                filename: "export",
+                table: "#tableId",
+                useDataUri: false,
+                showHeader: false,
+                url: "'.\yii\helpers\Url::to('download').'"
+        });
+    ');
+?>
 ```
 
 > [![2amigOS!](http://www.gravatar.com/avatar/55363394d72945ff7ed312556ec041e0.png)](http://www.2amigos.us)  

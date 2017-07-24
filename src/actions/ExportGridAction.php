@@ -1,26 +1,23 @@
 <?php
-/**
- * @copyright Copyright (c) 2014 2amigOS! Consulting Group LLC
- * @link http://2amigos.us
- * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
+
+/*
+ * This file is part of the 2amigos/yii2-export-grid-button-widget project.
+ * (c) 2amigOS! <http://2amigos.us/>
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
  */
-namespace dosamigos\tableexport;
+
+namespace dosamigos\gridexport\actions;
 
 use Yii;
 use yii\base\Action;
 use yii\web\BadRequestHttpException;
 
 /**
- * TableExportAction provides the functionality to handle form requests for file download to the TableExport javascript
+ * ExportGridAction provides the functionality to handle form requests for file download to the GridExport javascript
  * plugin.
- *
- *
- * @author Antonio Ramirez <amigo.cobos@gmail.com>
- * @link http://www.ramirezcobos.com/
- * @link http://www.2amigos.us/
- * @package dosamigos\tableexport
  */
-class TableExportAction extends Action
+class ExportGridAction extends Action
 {
     public function run()
     {
@@ -72,4 +69,4 @@ class TableExportAction extends Action
         }
         return $mime;
     }
-} 
+}

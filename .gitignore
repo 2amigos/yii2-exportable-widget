@@ -1,3 +1,5 @@
+/build
+
 # cache directories
 Thumbs.db
 *.DS_Store
@@ -14,7 +16,12 @@ nbproject
 .project
 .settings
 
+#vendor
+vendor
 
 # mac deployment helpers
 switch
 index
+
+# php_cs
+.php_cs.cache
