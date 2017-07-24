@@ -16,8 +16,7 @@ class ExportGridAsset extends AssetBundle
     public $sourcePath = '@vendor/2amigos/yii2-export-grid-button-widget/assets';
 
     public $js = [
-        'js/dosamigos-export-grid.button.js',
-        'js/jspdf.min.js',
+        'js/dosamigos-export-grid.button.js'
     ];
 
     public $css = [
