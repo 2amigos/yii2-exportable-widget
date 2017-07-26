@@ -7,6 +7,10 @@ Export Grid Widget for Yii2
 [![Build Status](https://img.shields.io/travis/2amigos/yii2-export-grid-button-widget/master.svg?style=flat-square)](https://travis-ci.org/2amigos/yii2-export-grid-button-widget)
 [![Quality Score](https://img.shields.io/scrutinizer/g/2amigos/yii2-grid-view-library.svg?style=flat-square)](https://scrutinizer-ci.com/g/2amigos/yii2-export-grid-button-widget)  
 
+
+> HEADS UP! This library is being rewritten entirely! So please, do not use "master" until we do it. It will work with 
+> The new grid-view-library as part of its ToolbarBehavior. - Thanks for the understanding, is for the best.
+
 ExportGridButton widget is a wrapper for the [2amigOS!](http://2amigos.us) GridExport jQuery plugin. It provides a
 number of options to export an HTML table in different formats.
 
