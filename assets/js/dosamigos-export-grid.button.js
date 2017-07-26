@@ -291,7 +291,31 @@
      */
     GridExport.prototype.export = function () {
         if(this.$element.find('input:checkbox').is(':checked')) {
-            window.open(this.options.url, 'Download');
+            var type = types[this.options.type],
+                filename = (this.options.filename || this._defaults.filename) + '.' + type.ext;
+            var $form = node('form').attr({
+                    'action': this.options.url,
+                    'method': 'post',
+                    'target': '_blank'
+                }),
+                $csrf = node('input').attr({
+                    'type': 'hidden',
+                    'name': yii.getCsrfParam() || '_csrf',
+                    'value': yii.getCsrfToken() || ''
+                }),
+                $filename = node('input').attr({
+                    'type': 'hidden',
+                    'name': 'filename',
+                    'value': this.options.filename
+                }),
+                $type = node('input').attr({
+                    'type': 'hidden',
+                    'name': 'type',
+                    'value': type.ext
+                });
+
+            $form.append($csrf, $type, $filename).appendTo('body').submit();
+            return;
         }
         this[this.options.type.toLowerCase()]();
     };
