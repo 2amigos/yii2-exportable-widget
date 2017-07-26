@@ -47,7 +47,7 @@ Using `data-uri` method. Please, check [http://caniuse.com/#feat=datauri](http:/
 about browser support for this method.
 
 ```php
-use dosamigos\gridexport\ExportGridButton;
+use dosamigos\exportgrid\ExportGridButton;
 
 echo ExportGridButton::widget([
      [
@@ -66,7 +66,7 @@ Using `ExportGridAction` - the most reliable option:
 
 ```php
 // On your controller
-use dosamigos\gridexport\actions\ExportGridAction;
+use dosamigos\exportgrid\actions\ExportGridAction;
 
 // ...
 public function actions()
@@ -83,7 +83,7 @@ public function actions()
 // ...
 
 // On your view
-use dosamigos\gridexport\ExportGridButton;
+use dosamigos\exportgrid\ExportGridButton;
 
 echo ExportGridButton::widget(
     [
@@ -104,7 +104,7 @@ Using it manually
 ```php
 <?php
 // On your view
-use dosamigos\gridexport\bundles\ExportGridAsset;
+use dosamigos\exportgrid\bundles\ExportGridAsset;
 
 ExportGridAsset::register($this);
 ?>
@@ -115,7 +115,7 @@ ExportGridAsset::register($this);
 
 ```javascript
 // On your javascript file
-$('#linkId').gridExport({
+$('#linkId').exportGrid({
     type: "xml",
     table: "#tableId",
     useDataUri: true
@@ -127,14 +127,14 @@ Atantion!!! useDataUri this option doesn't workon in Chrome
 or add in View
 
 ```php
-use dosamigos\gridexport\ButtonTableExportAsset;
+use dosamigos\exportgrid\ButtonTableExportAsset;
 ButtonTableExportAsset::register($this);
 ```
 
 ```php
 <?php
 $this->registerJs('
-    $(\'#linkId\').gridExport({
+    $(\'#linkId\').exportGrid({
         type: "csv",
         filename: "export",
         table: "#tableId",

@@ -1,6 +1,6 @@
 <?php
 
-namespace dosamigos\gridexport\bundles;
+namespace dosamigos\exportgrid\bundles;
 
 use yii\web\AssetBundle;
 

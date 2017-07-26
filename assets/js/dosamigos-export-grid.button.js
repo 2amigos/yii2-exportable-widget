@@ -10,7 +10,7 @@
 ;
 (function ($, window, document, undefined) {
 
-    var pluginName = "gridExport",
+    var pluginName = "exportGrid",
         defaults = {
             ignoredColumns: [],     // specifies which columns should be ignored on exportation
             showHeader: true,       // whether to export also the header text
@@ -273,6 +273,12 @@
         var self = this;
         this.$element.off('click').on('click', function (e) {
             e.preventDefault();
+            var $this = $(this), type = $this.data('type');
+            if('all' === type) {
+                var $input = $this.find('input:checkbox');
+                $input.prop('checked', !$input.prop('checked'));
+                return;
+            }
             if ($(this).data('type')) {
                 self.options.type = $(this).data('type'); // data-type overrides type
             }
@@ -284,6 +290,9 @@
      * Export trigger
      */
     GridExport.prototype.export = function () {
+        if(this.$element.find('input:checkbox').is(':checked')) {
+            window.open(this.options.url, 'Download');
+        }
         this[this.options.type.toLowerCase()]();
     };
 

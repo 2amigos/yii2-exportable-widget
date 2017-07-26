@@ -7,7 +7,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace dosamigos\gridexport\actions;
+namespace dosamigos\exportgrid\actions;
 
 use Yii;
 use yii\base\Action;

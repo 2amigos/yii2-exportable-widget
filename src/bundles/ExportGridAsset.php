@@ -7,7 +7,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace dosamigos\gridexport\bundles;
+namespace dosamigos\exportgrid\bundles;
 
 use yii\web\AssetBundle;
 
@@ -25,7 +25,7 @@ class ExportGridAsset extends AssetBundle
 
     public $depends = [
         'dosamigos\assets\DosAmigosAsset',
-        'dosamigos\gridexport\bundles\JspdfAsset',
+        'dosamigos\exportgrid\bundles\JspdfAsset',
         'yii\bootstrap\BootstrapPluginAsset'
     ];
 }
