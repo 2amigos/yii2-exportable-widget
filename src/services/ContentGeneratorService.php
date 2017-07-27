@@ -32,7 +32,6 @@ class ContentGeneratorService implements ContentGeneratorServiceInterface
     {
         /** @var BaseDataProvider $dataProvider */
         $dataProvider = $grid->dataProvider;
-        $models = $dataProvider->getModels();
         $mapper = new ColumnValueMapper($grid->columns, $columns);
         $source = new IteratorSourceIterator(new DataProviderIterator($dataProvider, $mapper));
         $filename = Yii::getAlias('@runtime') . '/' . md5(time()) . '.' . $type;
