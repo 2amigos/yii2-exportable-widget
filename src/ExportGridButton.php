@@ -18,10 +18,6 @@ use yii\helpers\Html;
 class ExportGridButton extends ButtonDropdown
 {
     /**
-     * @var string the table id or CSS selector
-     */
-    public $selector;
-    /**
      * @var string the action to submit to download exported data
      */
     public $url;
@@ -52,9 +48,6 @@ class ExportGridButton extends ButtonDropdown
     public function init()
     {
         parent::init();
-        if ($this->selector === null) {
-            throw new InvalidConfigException('"selector" cannot be empty');
-        }
         $this->encodeLabel = false;
         $this->initDropdownItems();
     }
