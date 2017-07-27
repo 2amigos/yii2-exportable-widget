@@ -15,6 +15,7 @@ use yii\grid\ActionColumn;
 use yii\grid\CheckboxColumn;
 use yii\grid\Column;
 use yii\grid\DataColumn;
+use yii\helpers\ArrayHelper;
 
 class ColumnValueMapper
 {
@@ -54,7 +55,7 @@ class ColumnValueMapper
             if ($this->isColumnExportable($column)) {
                 $key = $model instanceof ActiveRecordInterface
                     ? $model->getPrimaryKey()
-                    : $index;
+                    : $model[$column->attribute];
                 $value = $this->getColumnValue($model, $key, $index, $column);
                 $header = $this->getColumnHeader($column, $model);
                 $row[$header] = $value;
@@ -115,7 +116,9 @@ class ColumnValueMapper
         } elseif ($column instanceof DataColumn) {
             return $column->getDataCellValue($model, $key, $index);
         } elseif ($column instanceof Column) {
-            return $column->renderDataCell($model, $key, $index);
+            return $column->content !== null
+                ? call_user_func($column->content, $model, $key, $index, $this)
+                : $column->grid->emptyText;
         }
 
         return '';
@@ -137,6 +140,8 @@ class ColumnValueMapper
 
         return $column->label !== null
             ? $column->label
-            : (!empty($model) && $model instanceof Model ? $model->getAttributeLabel($column->attribute) : '');
+            : (!empty($model) && $model instanceof Model
+                ? $model->getAttributeLabel($column->attribute)
+                : ArrayHelper::getValue($model, $column->attribute));
     }
 }
