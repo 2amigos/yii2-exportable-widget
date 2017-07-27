@@ -19,6 +19,10 @@ class ExportGridAsset extends AssetBundle
         'js/dosamigos-export-grid.button.js'
     ];
 
+    public $css = [
+        'css/dosamigos-export-grid.font.css'
+    ];
+
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapPluginAsset'
