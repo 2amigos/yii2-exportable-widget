@@ -21,14 +21,7 @@ class DownloadService implements DownloadServiceInterface
     {
         $this->clearBuffers();
 
-        Yii::$app->getResponse()->getHeaders()
-            ->set('Pragma', 'public')
-            ->set('Expires', '0')
-            ->set('Cache-Control', 'must-revalidate, post-check=0, pre-check=0')
-            ->set('Content-Disposition', 'attachment; filename="' . $filename . '"')
-            ->set('Content-type', $mime . '; charset=utf-8');
-
-        echo $contents;
+        Yii::$app->getResponse()->sendContentAsFile($contents, $filename, ['mime' => $mime]);
 
         Yii::$app->end();
     }
