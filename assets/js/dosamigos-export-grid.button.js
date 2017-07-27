@@ -20,10 +20,15 @@ dosamigos.exportGrid = (function ($) {
         ensureIFrame(transport);
 
         var $type = $('<input/>', {'name': 'type', 'value': type, 'type': 'hidden'}),
-            $export = $('<input/>', {'name': 'export', 'value': 1, 'type': 'hidden'});
+            $export = $('<input/>', {'name': 'export', 'value': 1, 'type': 'hidden'}),
+            $csrf = $('<input/>', {
+                'name': yii.getCsrfParam() || '_csrf',
+                'value': yii.getCsrfToken(),
+                'type': 'hidden'
+            });
 
         $('<form/>', {'action': url, 'target': transport, 'method': 'post', css: {'display': 'none'}})
-            .append($type, $export)
+            .append($type, $export, $csrf)
             .appendTo('body')
             .submit()
             .remove();

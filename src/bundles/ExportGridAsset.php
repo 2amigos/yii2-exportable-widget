@@ -20,6 +20,7 @@ class ExportGridAsset extends AssetBundle
     ];
 
     public $depends = [
+        'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapPluginAsset'
     ];
 }
