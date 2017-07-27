@@ -142,6 +142,6 @@ class ColumnValueMapper
             ? $column->label
             : (!empty($model) && $model instanceof Model
                 ? $model->getAttributeLabel($column->attribute)
-                : ArrayHelper::getValue($model, $column->attribute));
+                : $column->attribute);
     }
 }
