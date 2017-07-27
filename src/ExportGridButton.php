@@ -34,11 +34,13 @@ class ExportGridButton extends ButtonDropdown
      * Will display only XML as the unique type of exportation. Defaults to all possible options available.
      */
     public $types = [
-        'xml',
         'csv',
-        //'pdf', /** todo: to be implemented */
+        'xls',
+        //'pdf', /** todo: PDF writer to be implemented */
         'json',
-        'html'
+        'xml',
+        'excel',
+        // 'html', /** todo: HTML writer to be implemented */
     ];
 
     /**

@@ -18,6 +18,7 @@ use Exporter\Source\IteratorSourceIterator;
 use Exporter\Writer\CsvWriter;
 use Exporter\Writer\JsonWriter;
 use Exporter\Writer\XlsWriter;
+use Exporter\Writer\XmlExcelWriter;
 use Exporter\Writer\XmlWriter;
 use Yii;
 use yii\data\BaseDataProvider;
@@ -49,7 +50,7 @@ class ContentGeneratorService implements ContentGeneratorServiceInterface
      * @param string $filename
      *
      * @throws UnknownExportTypeException
-     * @return CsvWriter|JsonWriter|XlsWriter|XmlWriter
+     * @return CsvWriter|JsonWriter|XlsWriter|XmlWriter|XmlExcelWriter
      */
     protected function getWriter($type, $filename)
     {
@@ -62,6 +63,8 @@ class ContentGeneratorService implements ContentGeneratorServiceInterface
                 return new XmlWriter($filename);
             case 'json':
                 return new JsonWriter($filename);
+            case 'excel':
+                return new XmlExcelWriter($filename);
             default:
                 throw new UnknownExportTypeException();
         }
