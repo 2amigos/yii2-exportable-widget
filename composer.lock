@@ -4,51 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2e461412583a4b68e448155758f8784d",
+    "content-hash": "3a92136aab0f704593a1a1f9bb47bfb5",
     "packages": [
-        {
-            "name": "2amigos/yii2-dosamigos-asset-bundle",
-            "version": "0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/2amigos/yii2-dosamigos-asset-bundle.git",
-                "reference": "39316c82cf25a884b9037e758968e1323b4add33"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/2amigos/yii2-dosamigos-asset-bundle/zipball/39316c82cf25a884b9037e758968e1323b4add33",
-                "reference": "39316c82cf25a884b9037e758968e1323b4add33",
-                "shasum": ""
-            },
-            "require": {
-                "yiisoft/yii2": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "dosamigos\\assets\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Antonio Ramirez",
-                    "email": "ramirez.cobos@gmail.com",
-                    "homepage": "http://2amigos.us"
-                }
-            ],
-            "description": "2amigOS! Asset Bundle for Yii2.",
-            "keywords": [
-                "asset",
-                "component",
-                "extension",
-                "yii"
-            ],
-            "time": "2014-09-01T13:43:36+00:00"
-        },
         {
             "name": "bower-asset/jquery",
             "version": "2.2.4",
@@ -137,45 +94,6 @@
                 "jquery",
                 "mask",
                 "plugins"
-            ]
-        },
-        {
-            "name": "bower-asset/jspdf",
-            "version": "1.3.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/MrRio/jsPDF.git",
-                "reference": "aac406f626e0af075f3024cd8738f3c2182e450b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/MrRio/jsPDF/zipball/aac406f626e0af075f3024cd8738f3c2182e450b",
-                "reference": "aac406f626e0af075f3024cd8738f3c2182e450b",
-                "shasum": ""
-            },
-            "type": "bower-asset-library",
-            "extra": {
-                "bower-asset-main": "dist/jspdf.debug.js",
-                "bower-asset-ignore": [
-                    "**/.*",
-                    "libs",
-                    "CNAME",
-                    "jspdf.js",
-                    "examples/jspdf.PLUGINTEMPLATE.js",
-                    "plugins/*",
-                    "todo.txt",
-                    "wscript.py",
-                    "build.sh",
-                    "test",
-                    "tools"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "description": "PDF Document creation from JavaScript",
-            "keywords": [
-                "pdf"
             ]
         },
         {
@@ -500,6 +418,49 @@
     ],
     "packages-dev": [
         {
+            "name": "2amigos/yii2-dosamigos-asset-bundle",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/2amigos/yii2-dosamigos-asset-bundle.git",
+                "reference": "39316c82cf25a884b9037e758968e1323b4add33"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/2amigos/yii2-dosamigos-asset-bundle/zipball/39316c82cf25a884b9037e758968e1323b4add33",
+                "reference": "39316c82cf25a884b9037e758968e1323b4add33",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "dosamigos\\assets\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Antonio Ramirez",
+                    "email": "ramirez.cobos@gmail.com",
+                    "homepage": "http://2amigos.us"
+                }
+            ],
+            "description": "2amigOS! Asset Bundle for Yii2.",
+            "keywords": [
+                "asset",
+                "component",
+                "extension",
+                "yii"
+            ],
+            "time": "2014-09-01T13:43:36+00:00"
+        },
+        {
             "name": "2amigos/yii2-editable-widget",
             "version": "1.0.1",
             "source": {
@@ -563,6 +524,67 @@
             "time": "2017-07-05T08:31:42+00:00"
         },
         {
+            "name": "2amigos/yii2-grid-view-library",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/2amigos/yii2-grid-view-library.git",
+                "reference": "feabd590e7e97fb9b205c9a1506c8ec1ca40a0fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/2amigos/yii2-grid-view-library/zipball/feabd590e7e97fb9b205c9a1506c8ec1ca40a0fe",
+                "reference": "feabd590e7e97fb9b205c9a1506c8ec1ca40a0fe",
+                "shasum": ""
+            },
+            "require": {
+                "2amigos/yii2-dosamigos-asset-bundle": "0.1.*",
+                "bower-asset/jquery.floatthead": "^2.0",
+                "bower-asset/store.js": "~1.3",
+                "yiisoft/yii2": "~2.0.5"
+            },
+            "require-dev": {
+                "2amigos/yii2-editable-widget": "~1.0",
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "phpmd/phpmd": "@stable",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "*"
+            },
+            "suggest": {
+                "2amigos/yii2-editable-widget": "Required for the EditableColumn"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "dosamigos\\grid\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Antonio Ramirez",
+                    "email": "hola@2amigos.us",
+                    "homepage": "http://2amigos.us"
+                }
+            ],
+            "description": "GridView Widget Extensions for Yii2.",
+            "keywords": [
+                "extension",
+                "grid",
+                "widget",
+                "yii"
+            ],
+            "time": "2017-07-27T13:03:45+00:00"
+        },
+        {
             "name": "bower-asset/bootstrap",
             "version": "v3.3.7",
             "source": {
@@ -612,6 +634,92 @@
             ]
         },
         {
+            "name": "bower-asset/jquery.floatthead",
+            "version": "2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mkoryak/floatThead.git",
+                "reference": "b1201f702994277b6b7a692692ffccad813cb26a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mkoryak/floatThead/zipball/b1201f702994277b6b7a692692ffccad813cb26a",
+                "reference": "b1201f702994277b6b7a692692ffccad813cb26a",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.8.0"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "dist/jquery.floatThead.js",
+                    "dist/jquery.floatThead.min.js"
+                ],
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "node_modules",
+                    "src",
+                    "demo",
+                    "package.json",
+                    ".gitignore"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Unobtrusively float any table's header without breaking styles or events",
+            "keywords": [
+                "fixed header",
+                "float table header",
+                "floatThead",
+                "locked header",
+                "scrolling table",
+                "sticky header",
+                "table",
+                "table header"
+            ]
+        },
+        {
+            "name": "bower-asset/jspdf",
+            "version": "1.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MrRio/jsPDF.git",
+                "reference": "aac406f626e0af075f3024cd8738f3c2182e450b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MrRio/jsPDF/zipball/aac406f626e0af075f3024cd8738f3c2182e450b",
+                "reference": "aac406f626e0af075f3024cd8738f3c2182e450b",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "dist/jspdf.debug.js",
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "libs",
+                    "CNAME",
+                    "jspdf.js",
+                    "examples/jspdf.PLUGINTEMPLATE.js",
+                    "plugins/*",
+                    "todo.txt",
+                    "wscript.py",
+                    "build.sh",
+                    "test",
+                    "tools"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "PDF Document creation from JavaScript",
+            "keywords": [
+                "pdf"
+            ]
+        },
+        {
             "name": "bower-asset/select2",
             "version": "3.5.2",
             "source": {
@@ -638,6 +746,26 @@
                     "select2-spinner.gif"
                 ]
             }
+        },
+        {
+            "name": "bower-asset/store.js",
+            "version": "v1.3.20",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/marcuswestin/store.js.git",
+                "reference": "15b925d60f817b359d2373b2331333d74ae7d97f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/marcuswestin/store.js/zipball/15b925d60f817b359d2373b2331333d74ae7d97f",
+                "reference": "15b925d60f817b359d2373b2331333d74ae7d97f",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "store.js"
+            },
+            "description": "A localStorage wrapper for all browsers without using cookies or flash. Uses localStorage, globalStorage, and userData behavior under the hood"
         },
         {
             "name": "doctrine/annotations",

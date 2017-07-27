@@ -14,11 +14,12 @@ use dosamigos\exportgrid\contracts\DownloadServiceInterface;
 use dosamigos\exportgrid\helpers\MimeTypeHelper;
 use dosamigos\exportgrid\services\ContentGeneratorService;
 use dosamigos\exportgrid\services\DownloadService;
+use dosamigos\grid\contracts\RunnableBehaviorInterface;
 use Yii;
 use yii\base\Behavior;
 use yii\grid\GridView;
 
-class ExportableBehavior extends Behavior
+class ExportableBehavior extends Behavior implements RunnableBehaviorInterface
 {
     /**
      * @var string the filename that will be used for the download. It must be without file extension!
@@ -54,7 +55,6 @@ class ExportableBehavior extends Behavior
         if (null === $this->contentGeneratorService) {
             $this->contentGeneratorService = new ContentGeneratorService();
         }
-        $this->run();
     }
 
     /**
@@ -62,7 +62,7 @@ class ExportableBehavior extends Behavior
      */
     public function run()
     {
-        if (Yii::$app->request->post('export') && !empty($this->columns)) {
+        if (Yii::$app->request->post('export')) {
             /** @var GridView $owner */
             $owner = $this->owner;
             $mime = MimeTypeHelper::getMimeType($this->type);

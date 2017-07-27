@@ -14,19 +14,19 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require" : {
-        "yiisoft/yii2": "~2.0.5",
-        "2amigos/yii2-dosamigos-asset-bundle": "0.1.*",
-        "bower-asset/jspdf": "~1.3"
+        "yiisoft/yii2": "~2.0.5"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0",
         "friendsofphp/php-cs-fixer": "^2.0",
         "squizlabs/php_codesniffer": "*",
         "phpmd/phpmd": "@stable",
-        "sonata-project/exporter": "^1.7"
+        "sonata-project/exporter": "^1.7",
+        "2amigos/yii2-grid-view-library": "^1.0"
     },
     "suggest": {
-        "sonata-project/exporter": "Needed to use ExportableBehavior with GridView widget from dosamigos."
+        "sonata-project/exporter": "Needed to use ExportableBehavior export features.",
+        "2amigos/yii2-grid-view-library": "To use the ExportableBehavior on its GridView."
     },
     "autoload": {
         "psr-4": {
