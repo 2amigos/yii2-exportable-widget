@@ -11,8 +11,7 @@ Export Grid Widget for Yii2
 > HEADS UP! This library is being rewritten entirely! So please, do not use "master" until we do it. It will work with 
 > The new grid-view-library as part of its ToolbarBehavior. - Thanks for the understanding, is for the best.
 
-ExportGridButton widget is a wrapper for the [2amigOS!](http://2amigos.us) GridExport jQuery plugin. It provides a
-number of options to export an HTML table in different formats.
+TODO ...
 
 The current supported formats are:
 
@@ -22,10 +21,7 @@ The current supported formats are:
 * excel
 * pdf
 
-The plugin can also be used separately, that is, by using ButtonTableExportTable and registering its assets. By doing it,
-you could configure any click'able HTMLElement on your page.
-
-The widget extends `yii\bootstrap\DropdownButton`, therefore, you can use all its properties.
+TODO ... 
 
 Installation
 ------------
@@ -39,7 +35,7 @@ php composer.phar require "2amigos/yii2-export-grid-button-widget" "*"
 or add
 
 ```json
-"2amigos/yii2-export-grid-button-widget" : "*"
+"2amigos/yii2-export-grid-button-widget" : "^2.0"
 ```
 
 to the require section of your application's `composer.json` file.
@@ -47,108 +43,7 @@ to the require section of your application's `composer.json` file.
 Usage
 -----
 
-Using `data-uri` method. Please, check [http://caniuse.com/#feat=datauri](http://caniuse.com/#feat=datauri) to find out
-about browser support for this method.
-
-```php
-use dosamigos\exportgrid\ExportGridButton;
-
-echo ExportGridButton::widget([
-     [
-        'label' => 'Export Table Grid',
-        'selector' => '#my-grid-id > table',
-        'split' => true,
-        'exportClientOptions' => [
-            'ignoredColumns' => [0, 7], // lets ignore some columns
-            'useDataUri' => true,
-        ]
-    ]
-]);
-```
-
-Using `ExportGridAction` - the most reliable option:
-
-```php
-// On your controller
-use dosamigos\exportgrid\actions\ExportGridAction;
-
-// ...
-public function actions()
-{
-    return [
-        // ...
-        'download' => [
-            'class' => ExportGridAction::className()
-        ]
-        // ...
-    ];
-}
-
-// ...
-
-// On your view
-use dosamigos\exportgrid\ExportGridButton;
-
-echo ExportGridButton::widget(
-    [
-        'label' => 'Export Table',
-        'selector' => '#tableId', // any jQuery selector
-        'exportClientOptions' => [
-            'ignoredColumns' => [0, 7],
-            'useDataUri' => false,
-            'url' => \yii\helpers\Url::to('controller/download')
-        ]
-    ]
-);
-
-```
-
-Using it manually
-
-```php
-<?php
-// On your view
-use dosamigos\exportgrid\bundles\ExportGridAsset;
-
-ExportGridAsset::register($this);
-?>
-
-<a id="linkId" >Export Table as Xml</a>
-
-```
-
-```javascript
-// On your javascript file
-$('#linkId').exportGrid({
-    type: "xml",
-    table: "#tableId",
-    useDataUri: true
-});
-
-```
-Atantion!!! useDataUri this option doesn't workon in Chrome
-
-or add in View
-
-```php
-use dosamigos\exportgrid\ButtonTableExportAsset;
-ButtonTableExportAsset::register($this);
-```
-
-```php
-<?php
-$this->registerJs('
-    $(\'#linkId\').exportGrid({
-        type: "csv",
-        filename: "export",
-        table: "#tableId",
-        useDataUri: false,
-        showHeader: false,
-        url: "'.\yii\helpers\Url::to('download').'"
-    });
-');
-?>
-```
+TODO ... 
 
 > [![2amigOS!](http://www.gravatar.com/avatar/55363394d72945ff7ed312556ec041e0.png)](http://www.2amigos.us)  
 > <i>Custom Software | Web & Mobile Software Development</i>  
