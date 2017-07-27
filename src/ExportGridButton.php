@@ -11,7 +11,6 @@ namespace dosamigos\exportgrid;
 
 use dosamigos\exportgrid\bundles\ExportGridAsset;
 use Yii;
-use yii\base\InvalidConfigException;
 use yii\bootstrap\ButtonDropdown;
 use yii\helpers\Html;
 
