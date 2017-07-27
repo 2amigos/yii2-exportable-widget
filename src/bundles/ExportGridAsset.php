@@ -24,8 +24,6 @@ class ExportGridAsset extends AssetBundle
     ];
 
     public $depends = [
-        'dosamigos\assets\DosAmigosAsset',
-        'dosamigos\exportgrid\bundles\JspdfAsset',
         'yii\bootstrap\BootstrapPluginAsset'
     ];
 }

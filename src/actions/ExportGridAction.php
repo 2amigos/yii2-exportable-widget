@@ -9,8 +9,12 @@
 
 namespace dosamigos\exportgrid\actions;
 
+use dosamigos\exportgrid\contracts\DownloadServiceInterface;
+use dosamigos\exportgrid\helpers\MimeTypeHelper;
+use dosamigos\exportgrid\services\DownloadService;
 use Yii;
 use yii\base\Action;
+use yii\base\InvalidConfigException;
 use yii\web\BadRequestHttpException;
 
 /**
@@ -19,54 +23,57 @@ use yii\web\BadRequestHttpException;
  */
 class ExportGridAction extends Action
 {
-    public function run()
-    {
-        if (Yii::$app->request->isPost) {
-            $filename = Yii::$app->request->post('filename');
-            $content = Yii::$app->request->post('content');
-            $type = Yii::$app->request->post('type');
+    /**
+     * @var string is the filename of the file to be downloaded. Defaults to "export-grid"
+     */
+    public $fileName = 'export-grid';
+    /**
+     * @var \Closure an anonymous function that is called once BEFORE forcing download. The return result of the
+     * function will be rendered on the file. It should have the following signature:
+     *
+     * ```php
+     * function ($type)
+     * ```
+     *
+     * - `type`: Is the format type to download. The anonymous function should return the content on the selected
+     * format.
+     */
+    public $contentValue;
+    /**
+     * @var DownloadServiceInterface
+     */
+    public $downloadService;
 
-            $mime = $this->getMimeType($type);
-            if ($mime !== false) {
-                Yii::$app->getResponse()->getHeaders()
-                    ->set('Pragma', 'public')
-                    ->set('Expires', '0')
-                    ->set('Cache-Control', 'must-revalidate, post-check=0, pre-check=0')
-                    ->set('Content-Disposition', 'attachment; filename="' . $filename . '.' . $type . '"')
-                    ->set('Content-type', $mime . '; charset=utf-8');
-                return $content;
-            }
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        if (!is_callable($this->contentValue)) {
+            throw new InvalidConfigException('"contentValue" must be a valid callable.');
         }
-        throw new BadRequestHttpException('Your request is invalid.');
+        if (null === $this->downloadService) {
+            $this->downloadService = new DownloadService();
+        }
+        parent::init();
     }
 
     /**
-     * Returns the mime type for the
-     * @param $type
-     *
-     * @return bool|string
+     * @throws BadRequestHttpException
+     * @return array|mixed
      */
-    protected function getMimeType($type)
+    public function run()
     {
-        $mime = false;
+        if (Yii::$app->request->isPost) {
+            $type = Yii::$app->request->post('type');
+            $contents = call_user_func($this->contentValue, $type);
+            $mime = MimeTypeHelper::getMimeType($type);
+            $filename = $this->fileName . '.' . $type;
 
-        switch ($type) {
-            case 'csv':
-                $mime = 'text/csv';
-                break;
-            case 'html':
-                $mime = 'text/html';
-                break;
-            case 'excel':
-                $mime = 'application/vnd.ms-excel';
-                break;
-            case 'xml':
-                $mime = 'text/xml';
-                break;
-            case 'json':
-                $mime = 'application/json';
-                break;
+            if ($mime !== false) {
+                $this->downloadService->run($filename, $mime, $contents);
+            }
         }
-        return $mime;
+        throw new BadRequestHttpException('Your request is invalid.');
     }
 }

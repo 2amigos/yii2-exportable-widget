@@ -1,6 +1,6 @@
 {
     "name": "2amigos/yii2-export-grid-button-widget",
-    "description": "Export Grid Button Widget for Yii2.",
+    "description": "Export GridView Widget for Yii2.",
     "keywords": ["yii", "extension", "export", "widget"],
     "type": "yii2-extension",
     "license": "BSD-3-Clause",
@@ -23,7 +23,10 @@
         "friendsofphp/php-cs-fixer": "^2.0",
         "squizlabs/php_codesniffer": "*",
         "phpmd/phpmd": "@stable",
-        "2amigos/yii2-editable-widget": "~1.0"
+        "sonata-project/exporter": "^1.7"
+    },
+    "suggest": {
+        "sonata-project/exporter": "Needed to use ExportableBehavior with GridView widget from dosamigos."
     },
     "autoload": {
         "psr-4": {

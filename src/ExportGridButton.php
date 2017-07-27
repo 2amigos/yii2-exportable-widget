@@ -10,33 +10,11 @@
 namespace dosamigos\exportgrid;
 
 use dosamigos\exportgrid\bundles\ExportGridAsset;
+use Yii;
 use yii\base\InvalidConfigException;
 use yii\bootstrap\ButtonDropdown;
 use yii\helpers\Html;
-use yii\helpers\Json;
-use yii\web\JsExpression;
 
-/**
- * ExportGridButton renders a dropdown button with different options to export a table providing its CSS selector.
- *
- * For example,
- *
- * ```php
- * echo dosamigos\exportgrid\ExportGridButton::widget(
- * [
- *  'label' => 'Export Bookings',
- *  'selector' => '#bookings-grid > table',
- *  'split' => true,
- *  'exportClientOptions' => [
- *      'ignoredColumns' => [0, 7],
- *      'useDataUri' => false,
- *      'url' => \yii\helpers\Url::to('download')
- *  ]
- * ]
- * );
- *
- * ```
- */
 class ExportGridButton extends ButtonDropdown
 {
     /**
@@ -44,15 +22,13 @@ class ExportGridButton extends ButtonDropdown
      */
     public $selector;
     /**
+     * @var string the action to submit to download exported data
+     */
+    public $url;
+    /**
      * @var string the button label
      */
     public $label = 'Export';
-    /**
-     * @var array the options for the underlying GridExport JS plugin.
-     * Please refer to the plugin file code for its options. These options are configured globally for all types of
-     * export.
-     */
-    public $exportClientOptions = [];
     /**
      * @var array the export types available. You can modify the list to display only certain types. For example,
      *
@@ -65,16 +41,10 @@ class ExportGridButton extends ButtonDropdown
     public $types = [
         'xml',
         'csv',
-        'pdf',
+        //'pdf', /** todo: to be implemented */
         'json',
         'html'
     ];
-    /**
-     * @var bool if set to true, then the plugin will not render the option "all". If that option is checked on the
-     * dropdown, the client plugin will call the URL set on clientOptions with the "format" parameter and it will be
-     * the action call the responsible to force download all records.
-     */
-    public $useClientExportOnly = true;
 
     /**
      * @inheritdoc
@@ -86,7 +56,6 @@ class ExportGridButton extends ButtonDropdown
             throw new InvalidConfigException('"selector" cannot be empty');
         }
         $this->encodeLabel = false;
-        $this->exportClientOptions['table'] = new JsExpression("{$this->options['id']}exportGrid");
         $this->initDropdownItems();
     }
 
@@ -97,6 +66,10 @@ class ExportGridButton extends ButtonDropdown
     {
         $this->registerClientScript();
 
+        if (empty($this->url)) {
+            $this->url = Yii::$app->request->getUrl();
+        }
+
         return parent::run();
     }
 
@@ -106,16 +79,7 @@ class ExportGridButton extends ButtonDropdown
     public function initDropdownItems()
     {
         $id = $this->options['id'];
-        if (!$this->useClientExportOnly) {
-            $this->dropdown['items'][] = [
-                'label' => Html::checkbox('select_all') . '&nbsp;All records',
-                'url' => '#',
-                'linkOptions' => [
-                    'id' => $id . 'allexportGrid',
-                    'data-type' => 'all'
-                ]
-            ];
-        }
+
         foreach ($this->types as $type) {
             $this->dropdown['items'][] = [
                 'label' => Html::tag('span', '', ['class' => "icon-{$type}-file"]) . " {$type}",
@@ -123,6 +87,7 @@ class ExportGridButton extends ButtonDropdown
                 'linkOptions' => [
                     'id' => $id . $type . 'exportGrid',
                     'data-type' => $type,
+                    'class' => 'btn-da-export-grid'
                 ]
             ];
         }
@@ -134,19 +99,15 @@ class ExportGridButton extends ButtonDropdown
      */
     protected function registerClientScript()
     {
-        $js = [];
         $id = $this->options['id'];
+        $hash = hash('crc32', $id);
+        $url = $this->url;
         $view = $this->getView();
 
         ExportGridAsset::register($view);
 
-        $options = Json::encode($this->exportClientOptions);
+        $js = "dosamigos.exportGrid.registerHandler('.btn-da-export-grid', '{$url}', '{$hash}');";
 
-        $js[] = "var {$id}exportGrid=jQuery('{$this->selector}');";
-        foreach ($this->types as $type) {
-            $el = $id . $type . 'exportGrid';
-            $js[] = "jQuery('#$el').exportGrid($options);";
-        }
-        $view->registerJs(implode("\n", $js));
+        $view->registerJs($js);
     }
 }
