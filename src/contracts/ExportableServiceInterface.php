@@ -9,7 +9,8 @@
 
 namespace dosamigos\exportable\contracts;
 
-use dosamigos\grid\GridView;
+
+use yii\grid\GridView;
 
 interface ExportableServiceInterface
 {

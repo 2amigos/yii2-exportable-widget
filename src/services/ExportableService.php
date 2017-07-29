@@ -14,8 +14,8 @@ use dosamigos\exportable\factory\WriterFactory;
 use dosamigos\exportable\iterators\DataProviderIterator;
 use dosamigos\exportable\iterators\SourceIterator;
 use dosamigos\exportable\mappers\ColumnValueMapper;
-use dosamigos\grid\GridView;
 use yii\data\BaseDataProvider;
+use yii\grid\GridView;
 
 class ExportableService implements ExportableServiceInterface
 {

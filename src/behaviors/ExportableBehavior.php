@@ -9,11 +9,10 @@
 
 namespace dosamigos\exportable\behaviors;
 
-use dosamigos\exportable\contracts\ContentGeneratorServiceInterface;
+use dosamigos\exportable\contracts\ExportableServiceInterface;
 use dosamigos\exportable\exceptions\UnknownExportTypeException;
-use dosamigos\exportable\helpers\MimeTypeHelper;
 use dosamigos\exportable\helpers\TypeHelper;
-use dosamigos\exportable\services\ContentGeneratorService;
+use dosamigos\exportable\services\ExportableService;
 use dosamigos\grid\contracts\RunnableBehaviorInterface;
 use Yii;
 use yii\base\Behavior;
@@ -26,7 +25,7 @@ class ExportableBehavior extends Behavior implements RunnableBehaviorInterface
      */
     public $filename = 'exportable';
     /**
-     * @var ContentGeneratorServiceInterface
+     * @var ExportableServiceInterface
      */
     public $exportableService;
     /**
@@ -66,8 +65,8 @@ class ExportableBehavior extends Behavior implements RunnableBehaviorInterface
                 )
             );
         }
-        if (null === $this->contentGeneratorService) {
-            $this->contentGeneratorService = new ContentGeneratorService();
+        if (null === $this->exportableService) {
+            $this->exportableService = new ExportableService();
         }
     }
 
@@ -80,7 +79,7 @@ class ExportableBehavior extends Behavior implements RunnableBehaviorInterface
             /** @var GridView $owner */
             $owner = $this->owner;
             $filename = $this->filename . '.' . $this->type;
-            $contents = $this->contentGeneratorService->run($owner, $this->type, $this->columns);
+            $this->exportableService->run($owner, $this->type, $this->columns, $filename);
         }
     }
 }
