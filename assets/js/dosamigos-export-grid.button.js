@@ -17,6 +17,7 @@ dosamigos.exportGrid = (function ($) {
     };
 
     var send = function (transport, url, type) {
+
         ensureIFrame(transport);
 
         var $type = $('<input/>', {'name': 'type', 'value': type, 'type': 'hidden'}),

@@ -7,10 +7,10 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace dosamigos\exportable\exceptions;
+namespace dosamigos\exportable\contracts;
 
-use Exception;
+use Iterator;
 
-class UnknownExportTypeException extends Exception
+interface SourceIteratorInterface extends Iterator
 {
 }

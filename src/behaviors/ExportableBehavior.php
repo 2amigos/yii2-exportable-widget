@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of the 2amigos/yii2-export-grid-button-widget project.
+ * This file is part of the 2amigos/yii2-exportable-widget project.
  * (c) 2amigOS! <http://2amigos.us/>
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace dosamigos\exportgrid\behaviors;
+namespace dosamigos\exportable\behaviors;
 
-use dosamigos\exportgrid\contracts\ContentGeneratorServiceInterface;
-use dosamigos\exportgrid\contracts\DownloadServiceInterface;
-use dosamigos\exportgrid\helpers\MimeTypeHelper;
-use dosamigos\exportgrid\services\ContentGeneratorService;
-use dosamigos\exportgrid\services\DownloadService;
+use dosamigos\exportable\contracts\ContentGeneratorServiceInterface;
+use dosamigos\exportable\exceptions\UnknownExportTypeException;
+use dosamigos\exportable\helpers\MimeTypeHelper;
+use dosamigos\exportable\helpers\TypeHelper;
+use dosamigos\exportable\services\ContentGeneratorService;
 use dosamigos\grid\contracts\RunnableBehaviorInterface;
 use Yii;
 use yii\base\Behavior;
@@ -26,17 +26,26 @@ class ExportableBehavior extends Behavior implements RunnableBehaviorInterface
      */
     public $filename = 'exportable';
     /**
-     * @var DownloadServiceInterface
-     */
-    public $downloadService;
-    /**
      * @var ContentGeneratorServiceInterface
      */
-    public $contentGeneratorService;
+    public $exportableService;
     /**
      * @var array the columns to export
      */
     public $columns = [];
+
+    /**
+     * @var array of configurable writers by type. The type is the key.
+     */
+    public $writers = [
+        TypeHelper::CSV => 'Box\Spout\Writer\CSV\Writer',
+        TypeHelper::XLSX => 'Box\Spout\Writer\XLSX\Writer',
+        TypeHelper::ODS => 'Box\Spout\Writer\ODS\Writer',
+        TypeHelper::XML => 'dosamigos\exportable\XmlWriter',
+        TypeHelper::JSON => 'dosamigos\exportable\JsonWriter',
+        TypeHelper::TXT => 'dosamigos\exportable\TextWriter'
+    ];
+
     /**
      * @var string
      */
@@ -47,10 +56,15 @@ class ExportableBehavior extends Behavior implements RunnableBehaviorInterface
      */
     public function init()
     {
-        $this->type = Yii::$app->request->post('type', 'excel');
+        $this->type = Yii::$app->request->post('type', TypeHelper::XLSX);
 
-        if (null === $this->downloadService) {
-            $this->downloadService = new DownloadService();
+        if (!array_key_exists($this->type, $this->writers)) {
+            throw new UnknownExportTypeException(
+                sprintf(
+                    'Unknown type "%s". Make sure writers are properly configured.',
+                    $this->type
+                )
+            );
         }
         if (null === $this->contentGeneratorService) {
             $this->contentGeneratorService = new ContentGeneratorService();
@@ -65,10 +79,8 @@ class ExportableBehavior extends Behavior implements RunnableBehaviorInterface
         if (Yii::$app->request->post('export')) {
             /** @var GridView $owner */
             $owner = $this->owner;
-            $mime = MimeTypeHelper::getMimeType($this->type);
             $filename = $this->filename . '.' . $this->type;
             $contents = $this->contentGeneratorService->run($owner, $this->type, $this->columns);
-            $this->downloadService->run($filename, $mime, $contents);
         }
     }
 }

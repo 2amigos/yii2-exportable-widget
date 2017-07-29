@@ -1,5 +1,5 @@
 {
-    "name": "2amigos/yii2-export-grid-button-widget",
+    "name": "2amigos/yii2-exportable-widget",
     "description": "Export GridView Widget for Yii2.",
     "keywords": ["yii", "extension", "export", "widget"],
     "type": "yii2-extension",
@@ -14,14 +14,15 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require" : {
-        "yiisoft/yii2": "~2.0.5"
+        "yiisoft/yii2": "~2.0.5",
+        "yiisoft/yii2-bootstrap": "^2.0.0",
+        "box/spout": "^2.7"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0",
         "friendsofphp/php-cs-fixer": "^2.0",
         "squizlabs/php_codesniffer": "*",
         "phpmd/phpmd": "@stable",
-        "sonata-project/exporter": "^1.7",
         "2amigos/yii2-grid-view-library": "^1.0"
     },
     "suggest": {
@@ -30,7 +31,7 @@
     },
     "autoload": {
         "psr-4": {
-            "dosamigos\\exportgrid\\": "src"
+            "dosamigos\\exportable\\": "src"
         }
     },
     "extra": {

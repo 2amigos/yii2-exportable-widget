@@ -1,11 +1,11 @@
 Export Grid Widget for Yii2
 ===========================
 
-[![Latest Stable Version](https://poser.pugx.org/2amigos/yii2-export-grid-button-widget/v/stable.svg)](https://packagist.org/packages/2amigos/yii2-export-grid-button-widget) 
+[![Latest Stable Version](https://poser.pugx.org/2amigos/yii2-exportable-widget/v/stable.svg)](https://packagist.org/packages/2amigos/yii2-exportable-widget) 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Total Downloads](https://poser.pugx.org/2amigos/yii2-export-grid-button-widget/downloads.svg)](https://packagist.org/packages/2amigos/yii2-export-grid-button-widget) 
-[![Build Status](https://img.shields.io/travis/2amigos/yii2-export-grid-button-widget/master.svg?style=flat-square)](https://travis-ci.org/2amigos/yii2-export-grid-button-widget)
-[![Quality Score](https://img.shields.io/scrutinizer/g/2amigos/yii2-grid-view-library.svg?style=flat-square)](https://scrutinizer-ci.com/g/2amigos/yii2-export-grid-button-widget)  
+[![Total Downloads](https://poser.pugx.org/2amigos/yii2-exportable-widget/downloads.svg)](https://packagist.org/packages/2amigos/yii2-exportable-widget) 
+[![Build Status](https://img.shields.io/travis/2amigos/yii2-exportable-widget/master.svg?style=flat-square)](https://travis-ci.org/2amigos/yii2-exportable-widget)
+[![Quality Score](https://img.shields.io/scrutinizer/g/2amigos/yii2-grid-view-library.svg?style=flat-square)](https://scrutinizer-ci.com/g/2amigos/yii2-exportable-widget)  
 
 
 > HEADS UP! This library is being rewritten entirely! So please, do not use "master" until we do it. It will work with 
@@ -30,12 +30,12 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require "2amigos/yii2-export-grid-button-widget" "*"
+php composer.phar require "2amigos/yii2-exportable-widget" "*"
 ```
 or add
 
 ```json
-"2amigos/yii2-export-grid-button-widget" : "^2.0"
+"2amigos/yii2-exportable-widget" : "^2.0"
 ```
 
 to the require section of your application's `composer.json` file.

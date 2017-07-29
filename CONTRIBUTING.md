@@ -2,7 +2,7 @@
 
 Contributions are **welcome** and will be fully **credited**.
 
-We accept contributions via Pull Requests on [Github](https://github.com/2amigos/yii2-export-grid-button-widget).
+We accept contributions via Pull Requests on [Github](https://github.com/2amigos/yii2-exportable-widget).
 
 
 ## Pull Requests

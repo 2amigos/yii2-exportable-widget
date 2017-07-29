@@ -1,13 +1,13 @@
 <?php
 
 /*
- * This file is part of the 2amigos/yii2-export-grid-button-widget project.
+ * This file is part of the 2amigos/yii2-exportable-widget project.
  * (c) 2amigOS! <http://2amigos.us/>
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace dosamigos\exportgrid\mappers;
+namespace dosamigos\exportable\mappers;
 
 use yii\base\Model;
 use yii\db\ActiveRecordInterface;
@@ -15,7 +15,6 @@ use yii\grid\ActionColumn;
 use yii\grid\CheckboxColumn;
 use yii\grid\Column;
 use yii\grid\DataColumn;
-use yii\helpers\ArrayHelper;
 
 class ColumnValueMapper
 {

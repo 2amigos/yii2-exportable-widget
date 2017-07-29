@@ -1,32 +1,32 @@
 <?php
 
 /*
- * This file is part of the 2amigos/yii2-export-grid-button-widget project.
+ * This file is part of the 2amigos/yii2-exportable-widget project.
  * (c) 2amigOS! <http://2amigos.us/>
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace dosamigos\exportgrid\actions;
+namespace dosamigos\exportable\actions;
 
-use dosamigos\exportgrid\contracts\DownloadServiceInterface;
-use dosamigos\exportgrid\helpers\MimeTypeHelper;
-use dosamigos\exportgrid\services\DownloadService;
+use dosamigos\exportable\contracts\DownloadServiceInterface;
+use dosamigos\exportable\helpers\MimeTypeHelper;
+use dosamigos\exportable\services\DownloadService;
 use Yii;
 use yii\base\Action;
 use yii\base\InvalidConfigException;
 use yii\web\BadRequestHttpException;
 
 /**
- * ExportGridAction provides the functionality to handle form requests for file download to the GridExport javascript
+ * ExportableAction provides the functionality to handle form requests for file download to the GridExport javascript
  * plugin.
  */
-class ExportGridAction extends Action
+class ExportableAction extends Action
 {
     /**
-     * @var string is the filename of the file to be downloaded. Defaults to "export-grid"
+     * @var string is the filename of the file to be downloaded. Defaults to "exportable"
      */
-    public $fileName = 'export-grid';
+    public $fileName = 'exportable';
     /**
      * @var \Closure an anonymous function that is called once BEFORE forcing download. The return result of the
      * function will be rendered on the file. It should have the following signature:

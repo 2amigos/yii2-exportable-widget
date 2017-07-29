@@ -1,20 +1,20 @@
 <?php
 
 /*
- * This file is part of the 2amigos/yii2-export-grid-button-widget project.
+ * This file is part of the 2amigos/yii2-exportable-widget project.
  * (c) 2amigOS! <http://2amigos.us/>
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace dosamigos\exportgrid;
+namespace dosamigos\exportable;
 
-use dosamigos\exportgrid\bundles\ExportGridAsset;
+use dosamigos\exportable\bundles\ExportGridAsset;
+use dosamigos\exportable\helpers\TypeHelper;
 use Yii;
 use yii\bootstrap\ButtonDropdown;
-use yii\helpers\Html;
 
-class ExportGridButton extends ButtonDropdown
+class ExportableButton extends ButtonDropdown
 {
     /**
      * @var string the action to submit to download exported data
@@ -28,19 +28,24 @@ class ExportGridButton extends ButtonDropdown
      * @var array the export types available. You can modify the list to display only certain types. For example,
      *
      * ```
-     * 'types' => [ 'xml' ]
+     * 'types' => [ 'xml' => 'As XML']
      * ```
      *
      * Will display only XML as the unique type of exportation. Defaults to all possible options available.
+     *
+     * The items are a key => label structure. The types (keys) will be used as a post value that will define the type
+     * that needs to be exported whether by the ExportableAction or the ExportableBehavior when used with our
+     * GridView Library.
+     *
+     * @see https://github.com/2amigos/yii2-grid-view-library
      */
     public $types = [
-        'csv',
-        'xls',
-        //'pdf', /** todo: PDF writer to be implemented */
-        'json',
-        'xml',
-        'excel',
-        // 'html', /** todo: HTML writer to be implemented */
+        TypeHelper::CSV => '<span class="label">.csv</span> As CSV',
+        TypeHelper::XLSX => '<span class="label">.xlsx</span> As Excel 2007+',
+        TypeHelper::ODS => '<span class="label">.ods</span> As Open Document Spreadsheet',
+        TypeHelper::JSON => '<span class="label">.json</span> As JSON',
+        TypeHelper::XML => '<span class="label">.csv</span> As XML',
+        TypeHelper::TXT => '<span class="label">.csv</span> As Text'
     ];
 
     /**
@@ -74,9 +79,9 @@ class ExportGridButton extends ButtonDropdown
     {
         $id = $this->options['id'];
 
-        foreach ($this->types as $type) {
+        foreach ($this->types as $type => $label) {
             $this->dropdown['items'][] = [
-                'label' => Html::tag('span', '', ['class' => "icon-{$type}-file"]) . " {$type}",
+                'label' => $label,
                 'url' => '#',
                 'linkOptions' => [
                     'id' => $id . $type . 'exportGrid',

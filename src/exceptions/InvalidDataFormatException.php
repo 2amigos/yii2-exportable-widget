@@ -9,8 +9,8 @@
 
 namespace dosamigos\exportable\exceptions;
 
-use Exception;
+use RuntimeException;
 
-class UnknownExportTypeException extends Exception
+class InvalidDataFormatException extends RuntimeException
 {
 }

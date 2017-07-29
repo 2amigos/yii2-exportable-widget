@@ -7,10 +7,13 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace dosamigos\exportable\exceptions;
+namespace dosamigos\exportable\helpers;
 
-use Exception;
+use Box\Spout\Common\Type;
 
-class UnknownExportTypeException extends Exception
+class TypeHelper extends Type
 {
+    const JSON = 'json';
+    const XML = 'xml';
+    const TXT = 'txt';
 }
