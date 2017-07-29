@@ -113,6 +113,9 @@ class ColumnValueMapper
         if ($column instanceof ActionColumn || $column instanceof CheckboxColumn) {
             return '';
         } elseif ($column instanceof DataColumn) {
+            if(is_callable($column->value)) { /** forbid callable formatting */
+                $column->value = null;
+            }
             return $column->getDataCellValue($model, $key, $index);
         } elseif ($column instanceof Column) {
             return $column->content !== null
