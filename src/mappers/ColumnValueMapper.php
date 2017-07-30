@@ -88,7 +88,6 @@ class ColumnValueMapper
         $headers = [];
         /** @var Column $column */
         foreach ($this->columns as $column) {
-
             $headers[] = $this->isHtml
                 ? $column->renderHeaderCell()
                 : $this->getColumnHeader($column, $model);
@@ -106,7 +105,7 @@ class ColumnValueMapper
      */
     protected function isColumnExportable($column)
     {
-        if(!($column instanceof DataColumn) || $column instanceof ActionColumn || $column instanceof CheckboxColumn) {
+        if (!($column instanceof DataColumn) || $column instanceof ActionColumn || $column instanceof CheckboxColumn) {
             return false;
         }
 
