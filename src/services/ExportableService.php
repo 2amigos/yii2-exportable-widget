@@ -18,15 +18,17 @@ use dosamigos\exportable\mappers\ColumnValueMapper;
 use Yii;
 use yii\data\BaseDataProvider;
 use yii\grid\GridView;
-use yii\helpers\ArrayHelper;
 
 class ExportableService implements ExportableServiceInterface
 {
+    /**
+     * @inheritdoc
+     */
     public function run(GridView $grid, $type, array $columns, $filename)
     {
         /** @var BaseDataProvider $dataProvider */
         $dataProvider = $grid->dataProvider;
-        $mapper = new ColumnValueMapper($grid->columns, $columns);
+        $mapper = new ColumnValueMapper($grid->columns, $columns, $type === TypeHelper::HTML);
         $source = new SourceIterator(new DataProviderIterator($dataProvider, $mapper));
         $model = $dataProvider->getTotalCount() > 0 ? $dataProvider->models[0] : null;
         $writer = WriterFactory::create($type);
