@@ -1,4 +1,4 @@
-Export Grid Widget for Yii2
+Exportable Widget for Yii2
 ===========================
 
 [![Latest Stable Version](https://poser.pugx.org/2amigos/yii2-exportable-widget/v/stable.svg)](https://packagist.org/packages/2amigos/yii2-exportable-widget) 
