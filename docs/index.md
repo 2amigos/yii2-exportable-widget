@@ -18,13 +18,13 @@ If you are using our [GridView Library](https://github.com/2amigos/yii2-grid-vie
 of a predefined set of exporting formats that, in conjunction with the [ToolbarBehavior](https://github.com/2amigos/yii2-grid-view-library/blob/master/docs/behaviors/toolbar-behavior.md), 
 you could export with a mere couple of configuration settings on your grid. The predefined exporting formats are: 
 
-* json: Custom Spout writer by 2amigos
-* csv: Provided by [Spout library](http://opensource.box.com/spout/)
-* xlsx: Provided by [Spout library](http://opensource.box.com/spout/)
-* html: Custom Spout writer by 2amigos
-* text: Custom Spout writer by 2amigos
-* xml: Custom Spout writer by 2amigos
-* ods: [Spout library](http://opensource.box.com/spout/)
+* **json**: Custom Spout writer by [2amigos](https://2amigos.us)
+* **csv**: By [Spout library](http://opensource.box.com/spout/)
+* **xlsx**: By [Spout library](http://opensource.box.com/spout/)
+* **html**: Custom Spout writer by [2amigos](https://2amigos.us)
+* **txt**: Custom Spout writer by [2amigos](https://2amigos.us)
+* **xml**: Custom Spout writer by [2amigos](https://2amigos.us)
+* **ods**: By [Spout library](http://opensource.box.com/spout/)
 
 We have chosen the amazing [Spout library](http://opensource.box.com/spout/) for the great API it has and the ease of 
 use. This library is not only [amazingly fast](http://opensource.box.com/spout/faq/) but also provided a mechanism that 
