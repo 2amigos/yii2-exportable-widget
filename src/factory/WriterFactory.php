@@ -12,6 +12,7 @@ namespace dosamigos\exportable\factory;
 use Box\Spout\Common\Helper\GlobalFunctionsHelper;
 use Box\Spout\Writer\WriterFactory as BaseFactory;
 use dosamigos\exportable\helpers\TypeHelper;
+use dosamigos\exportable\writers\HtmlWriter;
 use dosamigos\exportable\writers\JsonWriter;
 use dosamigos\exportable\writers\TextWriter;
 use dosamigos\exportable\writers\XmlWriter;
@@ -34,6 +35,9 @@ class WriterFactory extends BaseFactory
                 break;
             case TypeHelper::XML:
                 $writer = new XmlWriter();
+                break;
+            case TypeHelper::HTML:
+                $writer = new HtmlWriter();
                 break;
             default:
                 return parent::create($writerType);

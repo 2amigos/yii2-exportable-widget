@@ -16,6 +16,7 @@ TODO ...
 The current supported formats are:
 
 * json
+* 
 * csv
 * html
 * excel

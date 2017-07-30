@@ -42,7 +42,8 @@ class ExportableBehavior extends Behavior implements RunnableBehaviorInterface
         TypeHelper::ODS => 'Box\Spout\Writer\ODS\Writer',
         TypeHelper::XML => 'dosamigos\exportable\XmlWriter',
         TypeHelper::JSON => 'dosamigos\exportable\JsonWriter',
-        TypeHelper::TXT => 'dosamigos\exportable\TextWriter'
+        TypeHelper::TXT => 'dosamigos\exportable\TextWriter',
+        TypeHelper::HTML => 'dosamigos\exportable\HtmlWriter'
     ];
 
     /**

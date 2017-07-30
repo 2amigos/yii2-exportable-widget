@@ -16,4 +16,5 @@ class TypeHelper extends Type
     const JSON = 'json';
     const XML = 'xml';
     const TXT = 'txt';
+    const HTML = 'html';
 }

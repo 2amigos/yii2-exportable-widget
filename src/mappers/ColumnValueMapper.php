@@ -27,17 +27,23 @@ class ColumnValueMapper
      * @var array the exportable column names
      */
     protected $exportableColumns = [];
+    /**
+     * @var bool whether we render HTML or not
+     */
+    protected $isHtml;
 
     /**
      * ColumnValueMapper constructor.
      *
      * @param array $columns
      * @param array $exportableColumns
+     * @param bool $isHtml whether we need to render HTML or not
      */
-    public function __construct(array $columns, array $exportableColumns = [])
+    public function __construct(array $columns, array $exportableColumns = [], $isHtml = false)
     {
         $this->columns = $columns;
         $this->exportableColumns = $exportableColumns;
+        $this->isHtml = $isHtml;
     }
 
     /**
@@ -53,10 +59,15 @@ class ColumnValueMapper
         $row = [];
         foreach ($this->columns as $column) {
             if ($this->isColumnExportable($column)) {
+                /** @var DataColumn $column */
                 $key = $model instanceof ActiveRecordInterface
                     ? $model->getPrimaryKey()
                     : $model[$column->attribute];
-                $value = $this->getColumnValue($model, $key, $index, $column);
+
+                $value = $this->isHtml
+                    ? $column->renderDataCell($model, $key, $index)
+                    : ArrayHelper::getValue($model, $column->attribute);
+
                 $header = $this->getColumnHeader($column, $model);
                 $row[$header] = $value;
             }
@@ -75,8 +86,12 @@ class ColumnValueMapper
     public function getHeaders($model)
     {
         $headers = [];
+        /** @var Column $column */
         foreach ($this->columns as $column) {
-            $headers[] = $this->getColumnHeader($column, $model);
+
+            $headers[] = $this->isHtml
+                ? $column->renderHeaderCell()
+                : $this->getColumnHeader($column, $model);
         }
 
         return $headers;
@@ -85,44 +100,21 @@ class ColumnValueMapper
     /**
      * Checks whether the column is exportable or not
      *
-     * @param string $columnName
+     * @param Column $column
      *
      * @return bool
      */
-    protected function isColumnExportable($columnName)
+    protected function isColumnExportable($column)
     {
+        if(!($column instanceof DataColumn) || $column instanceof ActionColumn || $column instanceof CheckboxColumn) {
+            return false;
+        }
+
         if (empty($this->exportableColumns)) {
             return true;
         }
 
-        return in_array($columnName, $this->exportableColumns);
-    }
-
-    /**
-     * Get the column generated value from the column
-     *
-     * @param $model
-     * @param string $key
-     * @param int $index
-     * @param mixed $column
-     *
-     * @return string
-     */
-    protected function getColumnValue($model, $key, $index, $column)
-    {
-        /** @var Column $column */
-        if ($column instanceof ActionColumn || $column instanceof CheckboxColumn) {
-            return '';
-        } elseif ($column instanceof DataColumn) {
-            /** todo: think whether HTML should be used (getDataCellValue()) */
-            return ArrayHelper::getValue($model, $column->attribute);
-        } elseif ($column instanceof Column) {
-            return $column->content !== null
-                ? call_user_func($column->content, $model, $key, $index, $this)
-                : $column->grid->emptyText;
-        }
-
-        return '';
+        return in_array($column->attribute, $this->exportableColumns);
     }
 
     /**
