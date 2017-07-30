@@ -12,7 +12,7 @@ dosamigos.exportable = (function ($) {
     var ensureIFrame = function (transport) {
         var id = '#' + transport;
         if (!$(id).length) {
-            $('<iframe/>', {id: transport, css: {'display': 'none'}}).appendTo('body');
+            $('<iframe/>', {name: transport, css: {'display': 'none'}}).appendTo('body');
         }
     };
 
