@@ -85,7 +85,7 @@ class ExportableButton extends ButtonDropdown
                 'label' => $label,
                 'url' => '#',
                 'linkOptions' => [
-                    'id' => $id . $type . 'exportGrid',
+                    'id' => $id . $type . 'exportable',
                     'data-type' => $type,
                     'class' => 'btn-da-exportable'
                 ]
