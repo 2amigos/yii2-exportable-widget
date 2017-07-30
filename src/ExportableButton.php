@@ -40,12 +40,12 @@ class ExportableButton extends ButtonDropdown
      * @see https://github.com/2amigos/yii2-grid-view-library
      */
     public $types = [
-        TypeHelper::CSV => 'As CSV <span class="label label-default">.csv</span>',
-        TypeHelper::XLSX => 'As Excel 2007+ <span class="label label-default">.xlsx</span>',
-        TypeHelper::ODS => 'As Open Document Spreadsheet <span class="label label-default">.ods</span>',
-        TypeHelper::JSON => 'As JSON <span class="label label-default">.json</span>',
-        TypeHelper::XML => 'As XML <span class="label label-default">.xml</span>',
-        TypeHelper::TXT => 'As Text <span class="label label-default">.txt</span>',
+        TypeHelper::CSV => 'CSV <span class="label label-default">.csv</span>',
+        TypeHelper::XLSX => 'Excel 2007+ <span class="label label-default">.xlsx</span>',
+        TypeHelper::ODS => 'Open Document Spreadsheet <span class="label label-default">.ods</span>',
+        TypeHelper::JSON => 'JSON <span class="label label-default">.json</span>',
+        TypeHelper::XML => 'XML <span class="label label-default">.xml</span>',
+        TypeHelper::TXT => 'Text <span class="label label-default">.txt</span>',
         TypeHelper::HTML => 'HTML  <span class="label label-default">.html</span>'
     ];
 
