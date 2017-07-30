@@ -44,7 +44,7 @@ class ExportableButton extends ButtonDropdown
         TypeHelper::XLSX => 'As Excel 2007+ <span class="label label-default">.xlsx</span>',
         TypeHelper::ODS => 'As Open Document Spreadsheet <span class="label label-default">.ods</span>',
         TypeHelper::JSON => 'As JSON <span class="label label-default">.json</span>',
-        TypeHelper::XML => 'As XML <span class="label label-default">.csv</span>',
+        TypeHelper::XML => 'As XML <span class="label label-default">.xml</span>',
         TypeHelper::TXT => 'As Text <span class="label label-default">.txt</span>'
     ];
 
