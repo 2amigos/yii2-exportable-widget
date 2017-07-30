@@ -18,8 +18,7 @@ use yii\base\InvalidConfigException;
 use yii\web\BadRequestHttpException;
 
 /**
- * ExportableAction provides the functionality to handle form requests for file download to the GridExport javascript
- * plugin.
+ * ExportableAction provides the functionality to handle form requests for file download to the ExportableButton widget.
  */
 class ExportableAction extends Action
 {
@@ -32,7 +31,7 @@ class ExportableAction extends Action
      * function will be rendered on the file. It should have the following signature:
      *
      * ```php
-     * function ($type)
+     * function ($type){}
      * ```
      *
      * - `type`: Is the format type to download. The anonymous function should return the content on the selected
@@ -64,7 +63,7 @@ class ExportableAction extends Action
      */
     public function run()
     {
-        if (Yii::$app->request->isPost) {
+        if (Yii::$app->request->isPost && Yii::$app->request->post('type')) {
             $type = Yii::$app->request->post('type');
             $contents = call_user_func($this->contentValue, $type);
             $mime = MimeTypeHelper::getMimeType($type);
