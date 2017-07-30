@@ -11,11 +11,14 @@ namespace dosamigos\exportable\services;
 
 use dosamigos\exportable\contracts\ExportableServiceInterface;
 use dosamigos\exportable\factory\WriterFactory;
+use dosamigos\exportable\helpers\TypeHelper;
 use dosamigos\exportable\iterators\DataProviderIterator;
 use dosamigos\exportable\iterators\SourceIterator;
 use dosamigos\exportable\mappers\ColumnValueMapper;
+use Yii;
 use yii\data\BaseDataProvider;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
 
 class ExportableService implements ExportableServiceInterface
 {
@@ -25,13 +28,29 @@ class ExportableService implements ExportableServiceInterface
         $dataProvider = $grid->dataProvider;
         $mapper = new ColumnValueMapper($grid->columns, $columns);
         $source = new SourceIterator(new DataProviderIterator($dataProvider, $mapper));
+        $model = $dataProvider->getTotalCount() > 0 ? $dataProvider->models[0] : null;
         $writer = WriterFactory::create($type);
 
+        $this->clearBuffers();
         $writer->openToBrowser($filename);
-
+        if ($model !== null && !in_array($type, [TypeHelper::JSON, TypeHelper::XML])) {
+            $writer->addRow($mapper->getHeaders($model));
+        }
         foreach ($source as $data) {
             $writer->addRow($data);
         }
         $writer->close();
+
+        Yii::$app->end();
+    }
+
+    /**
+     * Clean (erase) the output buffers and turns off output buffering
+     */
+    protected function clearBuffers()
+    {
+        while (ob_get_level() > 0) {
+            ob_end_clean();
+        }
     }
 }

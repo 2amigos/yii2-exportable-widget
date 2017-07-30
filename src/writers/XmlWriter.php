@@ -15,11 +15,17 @@ use RuntimeException;
 
 class XmlWriter extends AbstractWriter
 {
-    /** @var string Content-Type value for the header */
+    /**
+     * @var string Content-Type value for the header
+     */
     protected static $headerContentType = 'text/xml';
-    /** @var string the root element of the data to be exported */
+    /**
+     * @var string the root element of the data to be exported
+     */
     protected $rootElement = 'data';
-    /** @var string the child element of each row data */
+    /**
+     * @var string the child element of each row data
+     */
     protected $childElement = 'row';
 
     /**
@@ -47,7 +53,7 @@ class XmlWriter extends AbstractWriter
      */
     protected function closeWriter()
     {
-        fwrite($this->filePointer, sprintf("<\%s>\n", $this->rootElement));
+        fwrite($this->filePointer, sprintf("</%s>\n", $this->rootElement));
     }
 
     /**

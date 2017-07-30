@@ -11,16 +11,12 @@ namespace dosamigos\exportable\bundles;
 
 use yii\web\AssetBundle;
 
-class ExportGridAsset extends AssetBundle
+class ExportableAsset extends AssetBundle
 {
     public $sourcePath = '@vendor/2amigos/yii2-exportable-widget/assets';
 
     public $js = [
-        'js/dosamigos-export-grid.button.js'
-    ];
-
-    public $css = [
-        'css/hawcons.css'
+        'js/dosamigos-exportable.js'
     ];
 
     public $depends = [

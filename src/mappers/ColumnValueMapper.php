@@ -15,6 +15,7 @@ use yii\grid\ActionColumn;
 use yii\grid\CheckboxColumn;
 use yii\grid\Column;
 use yii\grid\DataColumn;
+use yii\helpers\ArrayHelper;
 
 class ColumnValueMapper
 {
@@ -71,7 +72,7 @@ class ColumnValueMapper
      *
      * @return array
      */
-    public function getAllColumnHeaders($model)
+    public function getHeaders($model)
     {
         $headers = [];
         foreach ($this->columns as $column) {
@@ -113,10 +114,8 @@ class ColumnValueMapper
         if ($column instanceof ActionColumn || $column instanceof CheckboxColumn) {
             return '';
         } elseif ($column instanceof DataColumn) {
-            if(is_callable($column->value)) { /** forbid callable formatting */
-                $column->value = null;
-            }
-            return $column->getDataCellValue($model, $key, $index);
+            /** todo: think whether HTML should be used (getDataCellValue()) */
+            return ArrayHelper::getValue($model, $column->attribute);
         } elseif ($column instanceof Column) {
             return $column->content !== null
                 ? call_user_func($column->content, $model, $key, $index, $this)

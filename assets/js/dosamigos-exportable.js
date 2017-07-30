@@ -6,7 +6,7 @@
 if (typeof dosamigos === "undefined" || !dosamigos) {
     var dosamigos = {};
 }
-dosamigos.exportGrid = (function ($) {
+dosamigos.exportable = (function ($) {
     'use strict';
 
     var ensureIFrame = function (transport) {

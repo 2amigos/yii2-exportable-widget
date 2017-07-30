@@ -9,7 +9,7 @@
 
 namespace dosamigos\exportable;
 
-use dosamigos\exportable\bundles\ExportGridAsset;
+use dosamigos\exportable\bundles\ExportableAsset;
 use dosamigos\exportable\helpers\TypeHelper;
 use Yii;
 use yii\bootstrap\ButtonDropdown;
@@ -40,12 +40,12 @@ class ExportableButton extends ButtonDropdown
      * @see https://github.com/2amigos/yii2-grid-view-library
      */
     public $types = [
-        TypeHelper::CSV => '<span class="label">.csv</span> As CSV',
-        TypeHelper::XLSX => '<span class="label">.xlsx</span> As Excel 2007+',
-        TypeHelper::ODS => '<span class="label">.ods</span> As Open Document Spreadsheet',
-        TypeHelper::JSON => '<span class="label">.json</span> As JSON',
-        TypeHelper::XML => '<span class="label">.csv</span> As XML',
-        TypeHelper::TXT => '<span class="label">.csv</span> As Text'
+        TypeHelper::CSV => 'As CSV <span class="label label-default">.csv</span>',
+        TypeHelper::XLSX => 'As Excel 2007+ <span class="label label-default">.xlsx</span>',
+        TypeHelper::ODS => 'As Open Document Spreadsheet <span class="label label-default">.ods</span>',
+        TypeHelper::JSON => 'As JSON <span class="label label-default">.json</span>',
+        TypeHelper::XML => 'As XML <span class="label label-default">.csv</span>',
+        TypeHelper::TXT => 'As Text <span class="label label-default">.txt</span>'
     ];
 
     /**
@@ -86,7 +86,7 @@ class ExportableButton extends ButtonDropdown
                 'linkOptions' => [
                     'id' => $id . $type . 'exportGrid',
                     'data-type' => $type,
-                    'class' => 'btn-da-export-grid'
+                    'class' => 'btn-da-exportable'
                 ]
             ];
         }
@@ -103,9 +103,9 @@ class ExportableButton extends ButtonDropdown
         $url = $this->url;
         $view = $this->getView();
 
-        ExportGridAsset::register($view);
+        ExportableAsset::register($view);
 
-        $js = "dosamigos.exportGrid.registerHandler('.btn-da-export-grid', '{$url}', '{$hash}');";
+        $js = "dosamigos.exportable.registerHandler('.btn-da-exportable', '{$url}', '{$hash}');";
 
         $view->registerJs($js);
     }

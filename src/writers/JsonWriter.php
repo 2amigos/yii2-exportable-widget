@@ -17,7 +17,9 @@ class JsonWriter extends AbstractWriter
      * @var int current position
      */
     protected $position;
-    /** @var string Content-Type value for the header */
+    /**
+     * @var string Content-Type value for the header
+     */
     protected static $headerContentType = 'application/json';
 
     /**
