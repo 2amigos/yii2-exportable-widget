@@ -10,6 +10,7 @@
 namespace dosamigos\exportable\mappers;
 
 use yii\base\Model;
+use yii\base\Object;
 use yii\db\ActiveRecordInterface;
 use yii\grid\ActionColumn;
 use yii\grid\CheckboxColumn;
@@ -64,16 +65,24 @@ class ColumnValueMapper
                     ? $model->getPrimaryKey()
                     : $model[$column->attribute];
 
-                $value = $this->isHtml
-                    ? $column->renderDataCell($model, $key, $index)
-                    : ArrayHelper::getValue($model, $column->attribute);
+                $value = $this->getColumnValue($column, $model, $key, $index);
 
-                $header = $this->getColumnHeader($column, $model);
+                $header = $this->getColumnHeader($column);
                 $row[$header] = $value;
             }
         }
 
         return $row;
+    }
+
+    protected function getColumnValue($column, $model, $key, $index)
+    {
+        $value = $column->renderDataCell($model, $key, $index);
+        if (!$this->isHtml) {
+            $value = strip_tags($value);
+        }
+
+        return $value;
     }
 
     /**
@@ -88,9 +97,9 @@ class ColumnValueMapper
         $headers = [];
         /** @var Column $column */
         foreach ($this->columns as $column) {
-            $headers[] = $this->isHtml
-                ? $column->renderHeaderCell()
-                : $this->getColumnHeader($column, $model);
+            if ($this->isColumnExportable($column)) {
+                $headers[] = $this->getColumnHeader($column);
+            }
         }
 
         return $headers;
@@ -105,7 +114,7 @@ class ColumnValueMapper
      */
     protected function isColumnExportable($column)
     {
-        if (!($column instanceof DataColumn) || $column instanceof ActionColumn || $column instanceof CheckboxColumn) {
+        if ($column instanceof ActionColumn || $column instanceof CheckboxColumn) {
             return false;
         }
 
@@ -124,16 +133,13 @@ class ColumnValueMapper
      *
      * @return string
      */
-    protected function getColumnHeader($column, $model)
+    protected function getColumnHeader($column)
     {
-        if (!($column instanceof DataColumn)) {
-            return $column->header;
+        $header = $column->renderHeaderCell();
+        if (!$this->isHtml) {
+            $header = strip_tags($header);
         }
 
-        return $column->label !== null
-            ? $column->label
-            : (!empty($model) && $model instanceof Model
-                ? $model->getAttributeLabel($column->attribute)
-                : $column->attribute);
+        return $header;
     }
 }
