@@ -13,7 +13,7 @@ Yii2 application whether you use our [GridView Library](https://github.com/2amig
 highly recommended) or your own. 
 
 If you are using our [GridView Library](https://github.com/2amigos/yii2-grid-view-library), you will take the advantage 
-of a predefined set of exporting formats that, in conjunction with the [ToolbarBehavior](https://github.com/2amigos/yii2-exportable-widget/blob/master/docs/behaviors/toolbar-behavior.md), 
+of a predefined set of exporting formats that, in conjunction with the [ToolbarBehavior](https://github.com/2amigos/yii2-grid-view-library/blob/master/docs/behaviors/toolbar-behavior.md), 
 you could export with a mere couple of configuration settings on your grid. The predefined exporting formats are: 
 
 * json
