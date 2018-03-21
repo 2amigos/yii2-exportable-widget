@@ -10,7 +10,6 @@
 namespace dosamigos\exportable\mappers;
 
 use yii\base\Model;
-use yii\base\Object;
 use yii\db\ActiveRecordInterface;
 use yii\grid\ActionColumn;
 use yii\grid\CheckboxColumn;
