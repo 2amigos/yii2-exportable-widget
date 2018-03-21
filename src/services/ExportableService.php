@@ -34,6 +34,7 @@ class ExportableService implements ExportableServiceInterface
         $writer = WriterFactory::create($type);
 
         $this->clearBuffers();
+        ob_start();
         $writer->openToBrowser($filename);
         if ($model !== null && !in_array($type, [TypeHelper::JSON, TypeHelper::XML])) {
             $writer->addRow($mapper->getHeaders($model));
