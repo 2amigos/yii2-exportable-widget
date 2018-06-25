@@ -33,7 +33,7 @@ use dosamigos\exportable\ExportableButton;
 echo ExportableButton::widget(
     [
         'label' => '<i class="glyphicon glyphicon-export"></i>',
-        'url' => Url::to(['my/download]), // setup the URL
+        'url' => Url::to(['my/download']), // setup the URL
         'options' => ['class' => 'btn-default'],
         'dropdown' => [
             'options' => ['class' => 'dropdown-menu-right']
@@ -63,7 +63,7 @@ use yii\helpers\Url;
 echo ExportableButton::widget(
     [
         'label' => '<i class="glyphicon glyphicon-export"></i>',
-        'url' => Url::to(['my-controller/export]), 
+        'url' => Url::to(['my-controller/export']), 
         'options' => ['class' => 'btn-default'],
         'dropdown' => [
             'options' => ['class' => 'dropdown-menu-right']
@@ -141,7 +141,7 @@ use yii\helpers\Url;
 echo ExportableButton::widget(
     [
         'label' => '<i class="glyphicon glyphicon-export"></i>',
-        'url' => Url::to(['my-controller/export]), 
+        'url' => Url::to(['my-controller/export']), 
         'options' => ['class' => 'btn-info'],
         'types' => [
             'pdf' => 'PDF <span class="label label-default">.pdf</span>',
